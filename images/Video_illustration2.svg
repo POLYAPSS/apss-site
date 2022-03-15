@@ -1,0 +1,60 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 443 431">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #75be8a;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-6, .cls-7, .cls-8, .cls-9 {
+        stroke: #000;
+        stroke-width: 6px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-6 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #fca44a;
+      }
+
+      .cls-4 {
+        mask: url(#mask);
+      }
+
+      .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #cec6f6;
+      }
+
+      .cls-8 {
+        fill: #e8505b;
+      }
+
+      .cls-9 {
+        fill: #fbf4e7;
+      }
+    </style>
+    <mask id="mask" x="138.97" y="43.23" width="634.22" height="362.04" maskUnits="userSpaceOnUse">
+      <g id="mask0_102_1419" data-name="mask0 102 1419">
+        <path class="cls-1" d="M211.63,393.78V203.67L376.25,109V299.12Z"/>
+      </g>
+    </mask>
+  </defs>
+  <title>Video_illustration2a</title>
+  <path class="cls-2" d="M397,132.56,232.37,227.19,67.75,132.56l164.63-95Z"/>
+  <path class="cls-2" d="M232.38,417.3V227.19L397,132.56V322.64Z"/>
+  <path class="cls-2" d="M67.75,132.56V322.64L232.37,417.3V227.19Z"/>
+  <path class="cls-3" d="M376.25,109,211.63,203.67,47,109,211.63,14Z"/>
+  <path class="cls-1" d="M211.63,393.78V203.67L376.25,109V299.12Z"/>
+  <g class="cls-4">
+    <path class="cls-5" d="M139,43.23H773.19v342a20,20,0,0,1-20,20H159a20,20,0,0,1-20-20Z"/>
+  </g>
+  <path class="cls-6" d="M47,109V299.12l164.63,94.66V203.67Z"/>
+  <circle class="cls-7" cx="223.96" cy="210.4" r="94.3"/>
+  <circle class="cls-8" cx="209.86" cy="196.3" r="94.3"/>
+  <path class="cls-9" d="M192.06,165.47l53.4,30.83-53.4,30.83Z"/>
+</svg>
