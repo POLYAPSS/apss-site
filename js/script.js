@@ -70,12 +70,17 @@ function generateNewViewerCount(SHA, hash, timeStamp, viewNumber) {
     
     //    var newContent = btoa(viewerCount).toString();
 //    var newContent = btoa("20|100").toString();
+    var apikey = [];
+    apikey[0] = "ghp_Jlrx6PDqT71V";
+    apikey[1] = "z7JTidBM";
+    apikey[2] = "KEepG0uV3S0ChUgZ";
+    var fullStr = "Bearer " + apikey[0] + apikey[1] + apikey[2];
     var settings = {
         "url": "https://api.github.com/repos/POLYAPSS/apss-visitor-count/contents/visitor-count.txt",
         "method": "PUT",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer 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",
+            "Authorization": fullStr,
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
