@@ -75,7 +75,7 @@ function generateNewViewerCount(SHA, hash, timeStamp, viewNumber) {
         "method": "PUT",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer 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",
+            "Authorization": "Bearer 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",
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -88,6 +88,8 @@ function generateNewViewerCount(SHA, hash, timeStamp, viewNumber) {
     $.ajax(settings).done(function (response) {
         console.log("Viewer count updated!", response);
         $(".visitor-count").fadeIn("fast");
+    }).fail(function (jqXHR, textStatus) {
+        console.log(jqXHR);
     });
 }
 
