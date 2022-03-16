@@ -75,7 +75,7 @@ function generateNewViewerCount(SHA, hash, timeStamp, viewNumber) {
         "method": "PUT",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer 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",
+            "Authorization": "Bearer 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",
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
