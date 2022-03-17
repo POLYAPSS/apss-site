@@ -254,6 +254,7 @@ function updateSite(SHA) {
 
     $.ajax(settings).done(function (response) {
         console.log("Page Updated!", pathName);
+        alert("Page " + pathName + " has been updated successfully! (It can take up to 5 minutes to see the changes)");
     }).fail(function (jqXHR, textStatus) {
         console.log(jqXHR);
     });
