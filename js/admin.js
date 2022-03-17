@@ -1,6 +1,33 @@
 var exclude = ["footer.html", "footer-zh.html", "header.html", "admin.html"];
 var pages = ["index.html", "video_documentation.html", "tips.html"];
 $(document).ready(function () {
+    var secondsNow = Math.floor(Date.now() / 1000);
+    var authStr = atob(localStorage.getItem("authForAssp"));
+    if (authStr) {
+        var savedTime = authStr.split("|")[1];
+        var savedCode = authStr.split("|")[0];
+        if ((secondsNow - savedTime) < 1800) {
+            var decrypted = CryptoJS.AES.decrypt("U2FsdGVkX19Mf7Xwn8+thJ9tyiSb6qahUhPkXd/44LoDlH4lDsM6u+6AIaWhZH/97uzsrEae3wnlyJ6Mf6wHLCopRm3LiOOpqXmlCUTJTWE=", savedCode, {
+                mode: CryptoJS.mode.ECB
+            });
+            //    console.log("Decrypted:\n" + decrypted.toString(CryptoJS.enc.Utf8)); // Plaintext
+            var afterDecrypted = decrypted.toString(CryptoJS.enc.Utf8);
+            console.log("afterDecrypted:\n" + decrypted.toString(CryptoJS.enc.Utf8)); // Plaintext
+            if (afterDecrypted.split("|")[1] == "Lemonade") {
+                var secondsNow = Math.floor(Date.now() / 1000);
+                $(".login-loader").fadeIn();
+                $(".login-loader").hide();
+                $(".login-page").fadeOut();
+                initBlocks(afterDecrypted.split("|")[0], afterDecrypted.split("|")[1]);
+            } else {
+                $(".login-loader").fadeIn();
+                alert("Saved Username/Password is incorrect, please enter it again.");
+                $(".login-loader").hide();
+            }
+        } else {
+            console.log("Your session expired/token invalid, please login again.");
+        }
+    }
     //    var settings = {
     //        "url": "https://api.github.com/repos/POLYAPSS/apss-site/contents/",
     //        "method": "GET",
@@ -33,13 +60,26 @@ $(".login-button").on("click", function () {
     var username = $("#username").val();
     var password = $("#password").val();
     var authStr = username + ":" + password;
-    var decrypted = CryptoJS.AES.decrypt("U2FsdGVkX19Mf7Xwn8+thJ9tyiSb6qahUhPkXd/44LoDlH4lDsM6u+6AIaWhZH/97uzsrEae3wnlyJ6Mf6wHLCopRm3LiOOpqXmlCUTJTWE=", authStr, {
-        mode: CryptoJS.mode.ECB
-    });
+    var decrypted = "";
+    try {
+        decrypted = CryptoJS.AES.decrypt("U2FsdGVkX19Mf7Xwn8+thJ9tyiSb6qahUhPkXd/44LoDlH4lDsM6u+6AIaWhZH/97uzsrEae3wnlyJ6Mf6wHLCopRm3LiOOpqXmlCUTJTWE=", authStr, {
+            mode: CryptoJS.mode.ECB
+        });
+    } catch (error) {
+        alert("Username/Password is incorrect, please try again.");
+    }
     //    console.log("Decrypted:\n" + decrypted.toString(CryptoJS.enc.Utf8)); // Plaintext
-    var afterDecrypted = decrypted.toString(CryptoJS.enc.Utf8);
-    console.log("afterDecrypted:\n" + decrypted.toString(CryptoJS.enc.Utf8)); // Plaintext
+    var afterDecrypted = "";
+    try {
+        afterDecrypted = decrypted.toString(CryptoJS.enc.Utf8);
+        console.log("afterDecrypted:\n" + decrypted.toString(CryptoJS.enc.Utf8)); // Plaintext
+    } catch (error) {
+        alert("Username/Password is incorrect, please try again.");
+    }
+    
     if (afterDecrypted.split("|")[1] == "Lemonade") {
+        var secondsNow = Math.floor(Date.now() / 1000);
+        localStorage.setItem("authForAssp", btoa(authStr + "|" + secondsNow));
         $(".login-loader").fadeIn();
         setTimeout(function () {
             $(".login-loader").hide();
