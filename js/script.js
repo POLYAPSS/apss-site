@@ -1,13 +1,27 @@
 var url_string = window.location.href
 var url = new URL(url_string);
 var editorEnabled = url.searchParams.get("editor");
+var byPassCounter = url.searchParams.get("stealth");
+var authKey = url.searchParams.get("auth");
 
+
+console.log(editorEnabled);
 if (editorEnabled == "true") {
-    AOS.init({
-        disable: true
-    });
+//    AOS.init({
+//        disable: true
+//    });
 } else {
-    AOS.init();
+    (function() { // Scoping function to avoid globals
+        var src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+        var cssLink = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+        document.write('<script src="' + src + '"><\/script>');
+        document.write('<link href="' + cssLink + '" rel="stylesheet">');
+    })();
+//    var head = document.getElementsByTagName('head')[0];
+//    var js = document.createElement("script");
+//    js.type = "text/javascript";
+//    js.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+//    head.appendChild(js);
 }
 
 $(".laptop-hitbox").on("click", function () {
@@ -105,9 +119,29 @@ function renderViwerCount(viewerCount) {
 
 var viewerCount = 0;
 $(document).ready(function () {
+    if (editorEnabled == "true") {
+        var decodedAuth = atob(authKey);
+        var secondsNow = Math.floor(Date.now() / 1000);
+        var baseUrl = window.location.href.split('?')[0];
+//        console.log(decodedAuth);
+//        console.log("decodedAuth", decodedAuth);
+//        console.log("time", secondsNow - parseInt(decodedAuth.split("|")[1]));
+        if (decodedAuth.split("|")[2] != "Lemonade") {
+            alert("You don't have permission to edit this page, redirecting...");
+            window.location.href = baseUrl;
+        }
+        if (secondsNow - parseInt(decodedAuth.split("|")[1]) > 1800) {
+            alert("Token expired, please re-login to edit");
+            window.location.href = "./admin.html";
+        }
+        
+    } else {
+        AOS.init();
+    }
     $(".profile-image-wrapper").css("height", $(".profile-image-wrapper").width() + "px");
     var currentUrlLink = window.location.href;
     var currentLang = "english";
+    $("footer").empty();
     if (currentUrlLink.includes("zh")) {
         currentLang = "cantonese";
     } else {
@@ -141,7 +175,9 @@ $(document).ready(function () {
         $(".english").attr("href", "./" + lastPart.split(".")[0].replace("-zh", "") + ".html");
     }
 //    getSHA();
-    viewCounterAction();
+    if (byPassCounter != "true") {
+        viewCounterAction();
+    }
     //    $.get('https://raw.githubusercontent.com/POLYAPSS/apss-visitor-count/main/visitor-count.txt', function (data) {
     ////        renderViwerCount(data);
     ////        viewerCount = parseInt(data);
