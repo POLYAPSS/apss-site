@@ -1,5 +1,5 @@
 var exclude = ["footer.html", "footer-zh.html", "header.html", "admin.html"];
-var pages = ["index.html", "video_documentation.html", "tips.html"];
+var pages = ["index.html", "video_documentation.html", "tips.html", "footer.html"];
 $(document).ready(function () {
     var secondsNow = Math.floor(Date.now() / 1000);
     var authStr = atob(localStorage.getItem("authForAssp"));
