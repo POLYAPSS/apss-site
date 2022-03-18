@@ -2,6 +2,7 @@
     --theme-black: rgba(30, 30, 30, 0.9);
     --theme-grey: rgba(100, 100, 100, 0.9);
     --theme-darkgrey: rgba(60, 60, 60, 0.9);
+    --theme-darkergrey: rgba(40, 40, 40, 1);
     --theme-leather: rgba(191, 132, 105, 1);
     --theme-orange: rgba(244, 180, 82, 1);
     --theme-banana: rgba(250, 216, 164, 1);
@@ -242,6 +243,117 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.beagle-component-panel {
+    display: flex;
+    flex-flow: column;
+    opacity: 0;
+    transition-duration: 100ms;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: var(--theme-darkergrey);
+/*    transform: translate(-100%, 0);*/
+}
+
+.beagle-component-gallery-panel {
+    display: none;
+    flex-flow: column;
+/*    opacity: 0;*/
+    transition-duration: 100ms;
+    position: absolute;
+    height: 90%;
+    width: 200%;
+    background: rgba(80, 80, 80, 1);
+    right: 150%;
+}
+
+.beagle-component-block-overlay {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(20, 20, 20, 0.2);
+}
+
+.beagle-component-block-overlay h4 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    width: auto;
+    background-color: white;
+}
+
+.beagle-component-gallery-panel .beagle-component-panel-body {
+    overflow-y: scroll;
+    flex-grow: 1;
+    padding: 0px 20px;
+}
+
+.beagle-component-premade-item {
+    cursor: pointer;
+    transition-duration: 150ms;
+    position: relative;
+    width: 100%;
+    background-color: white;
+    margin-top: 30px;
+    position: relative;
+/*    max-height: 200px;*/
+    height: 200px;
+    overflow: hidden;
+    border: 1px black solid;
+}
+
+.beagle-component-premade-item:hover {
+    filter: brightness(1.2);
+}
+
+.beagle-component-premade-inner {
+    pointer-events: none;
+}
+
+.beagle-flex {
+    display: flex;
+}
+
+.beagle-component-panel-body {
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+.beagle-component-item {
+    cursor: pointer;
+    transition-duration: 150ms;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0.5px rgba(100, 100, 100, 0.9) solid;
+    justify-content: space-between;
+}
+
+.beagle-component-item:hover {
+    background-color: rgba(100, 100, 100, 0.7);
+}
+
+.beagle-component-item * {
+    color: white;
+    font-weight: 100;
+    font-size: 1em; 
+}
+
+.beagle-builder .beagle-component-item h3 {
+    margin-top: 5px;
+}
+
+.beagle-component-logo {
+    width: 30%;
+}
+
+.beagle-component-logo svg {
+    fill: white;
+    stroke: white;
 }
 
 .beagle-panel-toolbar {
@@ -662,4 +774,8 @@
 
 .beagle-show {
     opacity: 1 !important;
+}
+
+.temp-visible {
+    min-height: 10px;
 }

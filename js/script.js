@@ -3,7 +3,7 @@ var url = new URL(url_string);
 var editorEnabled = url.searchParams.get("editor");
 var byPassCounter = url.searchParams.get("stealth");
 var authKey = url.searchParams.get("auth");
-
+var components = ["title_and_paragraph.html", "two_lists.html", "resources_item.html"];
 
 console.log(editorEnabled);
 if (editorEnabled == "true") {
@@ -124,6 +124,8 @@ $(document).ready(function () {
         var decodedAuth = atob(authKey);
         var secondsNow = Math.floor(Date.now() / 1000);
         var baseUrl = window.location.href.split('?')[0];
+        $("#main-html-content").css("position", "relative");
+        $(".nav-bar").css("position", "absolute");
 //        console.log(decodedAuth);
 //        console.log("decodedAuth", decodedAuth);
 //        console.log("time", secondsNow - parseInt(decodedAuth.split("|")[1]));
@@ -152,8 +154,8 @@ $(document).ready(function () {
     if (currentLang == "cantonese") {
         $(".cantonese").css("font-family", "Poppins-Bold");
         $(".intro-nav").text("簡介").attr("href", "./index-zh.html");
-        $(".video-nav").text("影片").attr("href", "./video_documentation-zh.html");
-        $(".tips-nav").text("貼士").attr("href", "./tips-zh.html");
+        $(".video-nav").text("示範影片").attr("href", "./video_documentation-zh.html");
+        $(".tips-nav").text("小貼士").attr("href", "./tips-zh.html");
         $("footer").load("footer-zh.html");
     } else {
         $(".english").css("font-family", "Poppins-Bold");
@@ -266,8 +268,12 @@ function updateSiteHTML(elementSelectorInput) {
     $(".beagle-selected").removeClass("beagle-selected");
     $(".beagle-hovering").removeClass("beagle-hovering");
     var cleansedHtml = $(elementSelector).clone();
+    cleansedHtml.find(".nav-bar").css("position", "");
     cleansedHtml.find(".beagle-builder").remove();
     cleansedHtml.find(".beagle-translatable").removeClass("beagle-translatable");
+    cleansedHtml.find(".temp-visible").removeClass("temp-visible");
+    cleansedHtml.find("#main-html-content").removeClass("beagle-laptop-width beagle-mobile-width");
+    cleansedHtml.find("#main-html-content").css("position", "");
     var mainContentHtml = cleansedHtml.find("#main-html-content").html();
     var mainContentHtmlClass = cleansedHtml.find("#main-html-content").attr("class");
     var mainContentHtmlStyles = cleansedHtml.find("#main-html-content").attr("style");
