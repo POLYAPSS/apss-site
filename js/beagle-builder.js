@@ -12,6 +12,8 @@ function deselectElement() {
     $("#selected-element-name").text("--");
     $("#beagle-empty-widget").show();
 }
+
+var sortable;
 function selectElement(thisEle) {
     // check if element is within the html scope
     if (thisEle.parents('#main-html').length) {
@@ -101,6 +103,17 @@ function selectElement(thisEle) {
             }
         }
     }
+//    $("*").removeClass("filtering");
+//    $("*").addClass("filtering");
+//    thisEle.removeClass("filtering");
+//    var gradientEL = document.getElementById('main-html-content');
+//    var gradientEL = thisEle.parent().parent().get(0);
+//    sortable = new Sortable(gradientEL, {
+//        animation: 150,
+//        filter: '.filtering'
+//    });
+//    console.log($(':not(.beagle-selected)'));
+//    console.log(sortable);
 }
 
 function clearEleClassList() {
