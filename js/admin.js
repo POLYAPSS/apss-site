@@ -56,6 +56,11 @@ $(document).ready(function () {
 
 });
 
+$(document).on('keyup', function (e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        $(".login-button").trigger("click");
+    }
+});
 $(".login-button").on("click", function () {
     var username = $("#username").val();
     var password = $("#password").val();
