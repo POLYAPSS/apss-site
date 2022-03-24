@@ -61,6 +61,9 @@
     margin-bottom: 0;
 }
 
+.beagle-temp-show {
+    display: block !important;
+}
 /* beagle top bar */
 .beagle-builder-top-bar {
     width: calc(100% - 300px);
@@ -239,6 +242,10 @@
 
 
 /* beagle panels */
+#beagle-html-content-edit {
+    resize: vertical;
+}
+
 .beagle-builder-right-bar-content {
     display: flex;
     flex-direction: row;
@@ -277,13 +284,45 @@
     background-color: rgba(20, 20, 20, 0.2);
 }
 
+.beagle-component-buttons {
+    position: absolute;
+/*    top: 50%;*/
+    right: 0%;
+/*    transform: translate(-50%, -50%);*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    opacity: 0;
+    transition-duration: 150ms;
+}
+
+.beagle-component-buttons h5 {
+    transition-duration: 150ms;
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--theme-leather);
+    font-weight: 100;
+    color: white;
+/*    border-radius: 0px 20px 0px 20px;*/
+    text-align: center;
+    width: auto;
+}
+
+.beagle-component-buttons h5:hover {
+    filter: brightness(1.1);
+}
+
 .beagle-component-block-overlay h4 {
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 5px;
+    padding: 10px;
     width: auto;
     background-color: white;
+    border-top: var(--theme-leather) solid 1px;
+    border-left: var(--theme-leather) solid 1px;
+    border-radius: 20px 0 0 0;
 }
 
 .beagle-component-gallery-panel .beagle-component-panel-body {
@@ -293,7 +332,7 @@
 }
 
 .beagle-component-premade-item {
-    cursor: pointer;
+/*    cursor: pointer;*/
     transition-duration: 150ms;
     position: relative;
     width: 100%;
@@ -307,7 +346,11 @@
 }
 
 .beagle-component-premade-item:hover {
-    filter: brightness(1.2);
+/*    filter: brightness(1.2);*/
+}
+
+.beagle-component-premade-item:hover .beagle-component-buttons {
+    opacity: 1;
 }
 
 .beagle-component-premade-inner {
@@ -367,6 +410,10 @@
 
 .beagle-active-tool {
     background-color: #ffb237;
+}
+
+.beagle-active-view-tool {
+    background-color: #56db6c;
 }
 
 .beagle-tool {
@@ -603,7 +650,7 @@
 .beagle-remove-class-list-item {
     position: absolute;
     right: 10px;
-    z-index: 100;
+    z-index: 0;
     cursor: pointer;
     font-weight: 500;
 }
@@ -626,7 +673,7 @@
     background-color: var(--theme-darkgrey);
     padding: 20px 20px;
     color: white;
-    height: 50%;
+    height: auto;
     width: 70%;
     margin-top: 0;
 }
@@ -636,7 +683,9 @@
     position: absolute;
     top: 70px;
     left: 0;
-    width: calc(100vw - 300px);
+/*    width: calc(100vw - 300px);*/
+    width: 100%;
+    z-index: 1;
     height: calc(100vh - 70px);
     background-color: var(--theme-darkgrey);
 }
@@ -680,6 +729,11 @@
     display: block;
     padding: 5px 10px;
     cursor: pointer;
+    background-color: white;
+}
+
+.beagle-context-menu-item[value=none] {
+    opacity: 0;
 }
 
 .beagle-context-menu-item:hover {
@@ -696,6 +750,18 @@
     animation-name: beagle-selected-blink;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+}
+
+.beagle-context-menu-inner {
+    opacity: 0;
+    transition-duration: 150ms;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transform: translateX(100%);
+    background: white;
+    box-shadow: 1px 1px 5px #888888;
+    flex-direction: column;
 }
 
 .beagle-hovering {
