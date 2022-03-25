@@ -468,6 +468,7 @@ if (editorEnabled == "true") {
             $("#beagle-html-widget").hide();
             $(".beagle-widget").hide();
             $("#beagle-empty-widget").show();
+            $("#beagle-media-widget").show();
             $("*[beagle-translatable]").addClass("beagle-translatable");
             if (Math.floor(Date.now()) - timeStored > 3) {
                 timeStored = Math.floor(Date.now());
