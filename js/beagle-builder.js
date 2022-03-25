@@ -16,6 +16,8 @@ function getMedia() {
 //                $("#beagle-image-select-area").append("<video controls class='embedded-video' poster='https://talbottinn.com/wp-content/uploads/2013/11/dummy-image-square.jpg'><source src='" + response[i].download_url + "' type='video/mp4'><source src='movie.ogg' type='video/ogg'>Your browser does not support the video tag.</video>");  
             }
         }
+    }).fail(function (jqXHR, textStatus) {
+        alert("Media retrieval failed, please check if you have an internet connection. (error " + jqXHR.status + ")");
     });
 }
 
@@ -95,6 +97,9 @@ function uploadPreviewImage() {
             reader.readAsDataURL(input.files[0]);
         }
     } else {
+        console.log("nameWithOwner", nameWithOwner);
+        console.log("uploadMediaToken", nameWithOwner);
+        console.log("nameWithOwner", nameWithOwner);
         alert("Media upload has not been enabled, please check your config before trying again.");
     }
 }
@@ -153,6 +158,8 @@ function createfile(fileName, fileMessage, fileContent, status) {
         $("#beagle-image-upload-preview").get(0).src= '';
         updateMediaGallery();
 //        $("#get-git").trigger("click");
+    }).fail(function (jqXHR, textStatus) {
+        alert("File upload failed, please check if you have an internet connection. (error " + jqXHR.status + ")");
     });
 }
 
