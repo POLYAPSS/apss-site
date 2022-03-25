@@ -125,10 +125,14 @@ var uploadMediaToken;
 var mediaFolder = "media";
 
 $(document).ready(function () {
-    if (url_string.includes("playground")) {
-        if (isPlayground != "playground") {
-            window.location.href = window.location.hostname;   
-        }
+    if (editorEnabled != "true") {
+        if (!url_string.includes("admin")) {
+            if (url_string.includes("playground")) {
+                if (isPlayground != "playground") {
+                    window.location.href = window.location.hostname;   
+                }
+            }   
+        }   
     }
     if (editorEnabled == "true") {
         var decodedAuth = atob(authKey);
