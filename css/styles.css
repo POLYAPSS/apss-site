@@ -1080,6 +1080,18 @@ table td {
     }
 }
 
+.logout-button {
+    cursor: pointer;
+    transition-duration: 150ms;
+    background-color: indianred;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    filter: brightness(1.2);
+}
 
 /*
 .content-paragraph-panel::after {
