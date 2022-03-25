@@ -119,9 +119,9 @@ function renderViwerCount(viewerCount) {
 
 var viewerCount = 0;
 var gitToken;
-const nameWithOwner = 'POLYAPSS/media-bucket';
-const uploadMediaToken;
-const mediaFolder = "media";
+var nameWithOwner = 'POLYAPSS/media-bucket';
+var uploadMediaToken;
+var mediaFolder = "media";
 
 $(document).ready(function () {
     if (editorEnabled == "true") {
