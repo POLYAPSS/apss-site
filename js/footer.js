@@ -12,7 +12,7 @@ $(document).ready(function () {
         gitToken = "Bearer " + decodedAuth.split("|")[0];
         if (decodedAuth.split("|")[2] != "Lemonade") {
             alert("You don't have permission to edit this page, redirecting...");
-            window.location.href = baseUrl;
+            window.location.href = window.location.hostname;
         }
         if (secondsNow - parseInt(decodedAuth.split("|")[1]) > 1800) {
             alert("Token expired, please re-login to edit");

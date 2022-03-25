@@ -56,6 +56,11 @@ $(document).ready(function () {
 
 });
 
+$(".logout-button").on("click", function () {
+    localStorage.setItem("authForAssp", " ");
+    window.location.reload();
+});
+
 $(document).on('keyup', function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
         $(".login-button").trigger("click");

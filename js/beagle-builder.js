@@ -92,7 +92,7 @@ function uploadPreviewImage() {
             reader.onloadend = function () {
                 var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
                 console.log(base64result);
-                getSHA(input.files[0].name, "uploading a file", base64result);
+                getSHAForMedia(input.files[0].name, "uploading a file", base64result);
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -104,7 +104,7 @@ function uploadPreviewImage() {
     }
 }
 
-function getSHA(fileName, fileMessage, fileContent) {
+function getSHAForMedia(fileName, fileMessage, fileContent) {
     var settings = {
       "url": "https://api.github.com/repos/" + nameWithOwner + "/contents/" + mediaFolder + "/" + fileName,
       "method": "GET",
