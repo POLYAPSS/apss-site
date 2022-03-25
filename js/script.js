@@ -119,6 +119,10 @@ function renderViwerCount(viewerCount) {
 
 var viewerCount = 0;
 var gitToken;
+const nameWithOwner = 'POLYAPSS/media-bucket';
+const uploadMediaToken;
+const mediaFolder = "media";
+
 $(document).ready(function () {
     if (editorEnabled == "true") {
         var decodedAuth = atob(authKey);
@@ -130,6 +134,7 @@ $(document).ready(function () {
 //        console.log("decodedAuth", decodedAuth);
 //        console.log("time", secondsNow - parseInt(decodedAuth.split("|")[1]));
         gitToken = "Bearer " + decodedAuth.split("|")[0];
+        uploadMediaToken = decodedAuth.split("|")[0];
         if (decodedAuth.split("|")[2] != "Lemonade") {
             alert("You don't have permission to edit this page, redirecting...");
             window.location.href = baseUrl;
