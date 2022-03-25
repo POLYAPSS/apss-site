@@ -3,6 +3,7 @@ var url = new URL(url_string);
 var editorEnabled = url.searchParams.get("editor");
 var byPassCounter = url.searchParams.get("stealth");
 var authKey = url.searchParams.get("auth");
+var isPlayground = url.searchParams.get("view");
 var components = ["title_and_paragraph.html", "two_lists.html", "simple_title.html", "resources_item.html", "line_divider.html", "line_divider_light.html", "list.html", "video_item.html", "video.html", "tip_item_left.html", "tip_item_right.html"];
 
 console.log(editorEnabled);
@@ -124,6 +125,11 @@ var uploadMediaToken;
 var mediaFolder = "media";
 
 $(document).ready(function () {
+    if (url_string.includes("playground")) {
+        if (isPlayground != "playground") {
+            window.location.href = window.location.hostname;   
+        }
+    }
     if (editorEnabled == "true") {
         var decodedAuth = atob(authKey);
         var secondsNow = Math.floor(Date.now() / 1000);
