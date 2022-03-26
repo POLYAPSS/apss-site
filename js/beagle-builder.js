@@ -353,6 +353,7 @@ function saveHTMLFile(elementSelectorInput) {
         cleansedHtml.find(".temp-visible").removeClass("temp-visible");
         cleansedHtml.find("#main-html-content").removeClass("beagle-laptop-width beagle-mobile-width");
         cleansedHtml.find(".beagle-temp-show").removeClass("beagle-temp-show");
+        cleansedHtml.find(".beagle-right-clicked").removeClass("beagle-right-clicked");
         var mainContentHtml = cleansedHtml.find("#main-html-content").html();
         var mainContentHtmlClass = cleansedHtml.find("#main-html-content").attr("class");
         var mainContentHtmlStyles = cleansedHtml.find("#main-html-content").attr("style");
@@ -600,12 +601,18 @@ if (editorEnabled == "true") {
         $(document).on("mouseleave", ".beagle-context-menu", function () {
             $(".beagle-context-menu-inner").css("opacity", "");
         });
+        
+        
+        $(document).on("click", "*", function () {
+            $(".beagle-right-clicked").removeClass("beagle-right-clicked");
+        });
 
         var timeStored = Math.floor(Date.now());
         // element click detections
         $("#main-html").bind('contextmenu', function (e) {
             if (Math.floor(Date.now()) - timeStored > 3) {
                 rightClickedElement = e.target;
+                $(rightClickedElement).addClass("beagle-right-clicked");
                 timeStored = Math.floor(Date.now());
                 console.log("eta: ", rightClickedElement);
                 var top = e.pageY + 5;

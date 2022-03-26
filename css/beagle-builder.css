@@ -758,6 +758,10 @@
     animation-iteration-count: infinite;
 }
 
+.beagle-right-clicked {
+    outline: blue 1px outset;
+}
+
 .beagle-context-menu-inner {
     opacity: 0;
     transition-duration: 150ms;

@@ -290,6 +290,7 @@ function updateSiteHTML(elementSelectorInput) {
     cleansedHtml.find("#main-html-content").removeClass("beagle-laptop-width beagle-mobile-width");
     cleansedHtml.find("#main-html-content").css("position", "");
     cleansedHtml.find(".beagle-temp-show").removeClass("beagle-temp-show");
+    cleansedHtml.find(".beagle-right-clicked").removeClass("beagle-right-clicked");
     var mainContentHtml = cleansedHtml.find("#main-html-content").html();
     var mainContentHtmlClass = cleansedHtml.find("#main-html-content").attr("class");
     var mainContentHtmlStyles = cleansedHtml.find("#main-html-content").attr("style");
