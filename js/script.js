@@ -269,7 +269,9 @@ function updateSite(SHA) {
         alert("Page " + pathName + " has been updated successfully! (It can take up to 5 minutes to see the changes)");
     }).fail(function (jqXHR, textStatus) {
         console.log(jqXHR);
-        alert("Page " + pathName + " update failed! Please check your internet connection or contact support. (error " + jqXHR.status + ")");
+        if (jqXHR.status != 409) {
+            alert("Page " + pathName + " update failed! Please check your internet connection or contact support. (error " + jqXHR.status + ")");
+        }
     });
 }
 
