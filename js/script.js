@@ -49,10 +49,7 @@ function getSHA(ipHash) {
     var settings = {
         "url": "https://api.github.com/repos/POLYAPSS/apss-visitor-count/contents/visitor-count.txt",
         "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Authorization": "Basic UE9MWUFQU1M6c29jaWFsd29yazIwMjE="
-        },
+        "timeout": 0
     };
     
     $.ajax(settings).done(function (response) {
@@ -237,16 +234,14 @@ function getSiteSha() {
     var settings = {
         "url": "https://api.github.com/repos/POLYAPSS/apss-site/contents" + pathName,
         "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Authorization": "Basic UE9MWUFQU1M6c29jaWFsd29yazIwMjE="
-        },
+        "timeout": 0
     };
     $.ajax(settings).done(function (response) {
         console.log("retrieved SHA: ", response.sha);
         updateSite(response.sha);
     }).fail(function (jqXHR, textStatus) {
         console.log(jqXHR);
+        alert("Unable to connect to server, please check your internet connection. (error " + jqXHR.status + ")");
     });
 }
 
@@ -274,6 +269,7 @@ function updateSite(SHA) {
         alert("Page " + pathName + " has been updated successfully! (It can take up to 5 minutes to see the changes)");
     }).fail(function (jqXHR, textStatus) {
         console.log(jqXHR);
+        alert("Page " + pathName + " update failed! Please check your internet connection or contact support. (error " + jqXHR.status + ")");
     });
 }
 
